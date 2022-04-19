@@ -1,0 +1,60 @@
+﻿@model ProjectManagement.Entities.ResponseModel<List<ProjectManagement.Entities.Models.ProjectModel>>
+
+@{
+    ViewData["Title"] = "List";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Projects List</h1>
+
+<p>
+    @Html.ActionLink("Create Project", "Create")
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayName("Id")
+            </th>
+            <th>
+                @Html.DisplayName("Project Name")
+            </th>
+            <th>
+                @Html.DisplayName("Amount")
+            </th>
+            <th>
+                @Html.DisplayName("Tenure (in days)")
+            </th>
+            <th>
+                @Html.DisplayName("Client Name")
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Result)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tenure)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Create", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
